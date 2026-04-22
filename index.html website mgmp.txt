@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGMP Informatika SMP - Barito Kuala</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --midnight-blue: #1a2a6c;
+            --silver: #bdc3c7;
+            --white: #ffffff;
+            --accent: #2c3e50;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--accent);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--midnight-blue);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--white) !important;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--silver) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(26, 42, 108, 0.8)), 
+                        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=2070') center/cover;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-primary {
+            background-color: var(--midnight-blue);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0d1a4a;
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background: var(--silver);
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .footer {
+            background-color: var(--midnight-blue);
+            color: var(--white);
+            padding: 40px 0;
+        }
+
+        #loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading-overlay">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#" onclick="showPage('home')">
+                <i data-lucide="cpu" class="me-2"></i>
+                <span class="fw-bold">MGMP INFORMATIKA BATOLA</span>
+            </a>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('home')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('berita')">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('administrasi')">Administrasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('galeri')">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('anggota')">Anggota</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 px-4" href="#" onclick="showPage('admin')">Panel Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Sections -->
+    <main id="app-content">
+        <!-- Section Home (Default) -->
+        <div id="page-home">
+            <header class="hero">
+                <div class="container">
+                    <h1 class="display-3 mb-4">Selamat Datang di Portal MGMP Informatika</h1>
+                    <p class="lead mb-5">Wadah kolaborasi guru informatika SMP se-Kabupaten Barito Kuala untuk mewujudkan pendidikan digital yang unggul.</p>
+                    <button class="btn btn-light btn-lg px-5 rounded-pill" onclick="showPage('berita')">Lihat Berita Terbaru</button>
+                </div>
+            </header>
+            
+            <section class="container text-center">
+                <h2 class="section-title">Profil MGMP</h2>
+                <div class="row mt-4">
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 card h-100">
+                            <i data-lucide="users" class="mx-auto mb-3 text-primary" size="40"></i>
+                            <h4>Komunitas Aktif</h4>
+                            <p>Menghimpun seluruh guru Informatika SMP di wilayah Barito Kuala.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 card h-100">
+                            <i data-lucide="book-open" class="mx-auto mb-3 text-primary" size="40"></i>
+                            <h4>Kurikulum Update</h4>
+                            <p>Berbagi perangkat ajar sesuai perkembangan Kurikulum Merdeka.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 card h-100">
+                            <i data-lucide="zap" class="mx-auto mb-3 text-primary" size="40"></i>
+                            <h4>Inovasi Digital</h4>
+                            <p>Mendorong implementasi teknologi dalam proses belajar mengajar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Section Berita -->
+        <div id="page-berita" class="container d-none py-5">
+            <h2 class="section-title">Berita & Artikel</h2>
+            <div id="berita-list" class="row">
+                <!-- Data berita akan dimuat di sini -->
+                <div class="col-12 text-center p-5">Memuat berita...</div>
+            </div>
+        </div>
+
+        <!-- Section Administrasi -->
+        <div id="page-administrasi" class="container d-none py-5">
+            <h2 class="section-title">Administrasi Perangkat Ajar</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i data-lucide="folder" class="me-3"></i>
+                            <h5 class="mb-0">Kurikulum Merdeka (Kelas 7-9)</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Modul Ajar Informatika
+                                <a href="#" class="btn btn-sm btn-primary">Unduh</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Alur Tujuan Pembelajaran (ATP)
+                                <a href="#" class="btn btn-sm btn-primary">Unduh</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Program Tahunan (Prota)
+                                <a href="#" class="btn btn-sm btn-primary">Unduh</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Program Semester (Prosem)
+                                <a href="#" class="btn btn-sm btn-primary">Unduh</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card p-4 bg-light border-0">
+                        <h5>Punya File untuk Dibagikan?</h5>
+                        <p class="text-muted">Kontribusi Anda sangat berharga bagi rekan-rekan guru lainnya.</p>
+                        <button class="btn btn-outline-dark mt-3">Hubungi Pengurus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Galeri -->
+        <div id="page-galeri" class="container d-none py-5">
+            <h2 class="section-title">Galeri Kegiatan</h2>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb28f74b081?auto=format&fit=crop&q=80&w=500" class="img-fluid rounded shadow-sm" alt="Kegiatan 1">
+                </div>
+                <div class="col-md-4">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=500" class="img-fluid rounded shadow-sm" alt="Kegiatan 2">
+                </div>
+                <div class="col-md-4">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500" class="img-fluid rounded shadow-sm" alt="Kegiatan 3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Anggota -->
+        <div id="page-anggota" class="container d-none py-5">
+            <h2 class="section-title">Data Anggota</h2>
+            <div class="card overflow-hidden">
+                <table class="table table-hover mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <th>Asal Sekolah</th>
+                        </tr>
+                    </thead>
+                    <tbody id="anggota-list">
+                        <!-- Data anggota dimuat di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section Admin -->
+        <div id="page-admin" class="container d-none py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div id="admin-login" class="card p-5 text-center">
+                        <h3 class="mb-4">Login Admin</h3>
+                        <input type="password" id="admin-pass" class="form-control mb-3" placeholder="Masukkan Password">
+                        <button class="btn btn-primary w-100" onclick="checkLogin()">Masuk</button>
+                    </div>
+
+                    <div id="admin-panel" class="d-none">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Kelola Berita</h3>
+                            <button class="btn btn-danger btn-sm" onclick="logoutAdmin()">Keluar</button>
+                        </div>
+                        <div class="card p-4 mb-4">
+                            <h5>Tambah Berita Baru</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Judul</label>
+                                <input type="text" id="news-title" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Konten</label>
+                                <textarea id="news-content" class="form-control" rows="4"></textarea>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="submitBerita()">Simpan Berita</button>
+                        </div>
+                        
+                        <div class="card p-4">
+                            <h5>Daftar Berita (Hapus)</h5>
+                            <div id="admin-news-list" class="list-group">
+                                <!-- List berita untuk dihapus -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-2">© 2024 MGMP Informatika SMP Barito Kuala - Kalimantan Selatan</p>
+            <div class="small text-silver">
+                Follow us: 
+                <a href="#" class="text-white mx-2">Instagram</a> | 
+                <a href="#" class="text-white mx-2">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // GANTI URL INI dengan URL Web App dari Google Apps Script Anda
+        const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+        let isLogged = false;
+
+        // Inisialisasi Ikon
+        lucide.createIcons();
+
+        // Navigasi Halaman
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            const pages = ['home', 'berita', 'administrasi', 'galeri', 'anggota', 'admin'];
+            pages.forEach(p => {
+                document.getElementById('page-' + p).classList.add('d-none');
+            });
+            
+            // Tampilkan halaman terpilih
+            document.getElementById('page-' + pageId).classList.remove('d-none');
+            window.scrollTo(0, 0);
+
+            // Fetch data jika masuk halaman tertentu
+            if (pageId === 'berita') loadBerita();
+            if (pageId === 'anggota') loadAnggota();
+            if (pageId === 'admin' && isLogged) loadAdminNews();
+        }
+
+        // FUNGSI API
+        async function fetchData(action) {
+            showLoading(true);
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=${action}`);
+                const data = await response.json();
+                showLoading(false);
+                return data;
+            } catch (err) {
+                console.error(err);
+                showLoading(false);
+                return [];
+            }
+        }
+
+        // LOAD DATA
+        async function loadBerita() {
+            const list = document.getElementById('berita-list');
+            list.innerHTML = '<div class="col-12 text-center p-5">Memuat berita...</div>';
+            
+            const data = await fetchData('getBerita');
+            list.innerHTML = '';
+            
+            if (data.length === 0) {
+                list.innerHTML = '<div class="col-12 text-center">Belum ada berita.</div>';
+                return;
+            }
+
+            data.reverse().forEach(item => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4 mb-4';
+                col.innerHTML = `
+                    <div class="card h-100 p-3">
+                        <small class="text-muted">${item.tanggal}</small>
+                        <h5 class="mt-2">${item.judul}</h5>
+                        <p class="text-truncate">${item.konten}</p>
+                        <button class="btn btn-link text-primary p-0 text-start">Baca Selengkapnya</button>
+                    </div>
+                `;
+                list.appendChild(col);
+            });
+        }
+
+        async function loadAnggota() {
+            const list = document.getElementById('anggota-list');
+            list.innerHTML = '<tr><td colspan="2" class="text-center">Memuat data...</td></tr>';
+            
+            const data = await fetchData('getAnggota');
+            list.innerHTML = '';
+            
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.nama}</td>
+                    <td>${item.sekolah}</td>
+                `;
+                list.appendChild(tr);
+            });
+        }
+
+        // ADMIN LOGIC
+        function checkLogin() {
+            const pass = document.getElementById('admin-pass').value;
+            // Password dummy: informatika2024
+            if (pass === 'informatika2024') {
+                isLogged = true;
+                document.getElementById('admin-login').classList.add('d-none');
+                document.getElementById('admin-panel').classList.remove('d-none');
+                loadAdminNews();
+            } else {
+                alert('Password salah!');
+            }
+        }
+
+        function logoutAdmin() {
+            isLogged = false;
+            document.getElementById('admin-pass').value = '';
+            document.getElementById('admin-login').classList.remove('d-none');
+            document.getElementById('admin-panel').classList.add('d-none');
+        }
+
+        async function submitBerita() {
+            const judul = document.getElementById('news-title').value;
+            const konten = document.getElementById('news-content').value;
+
+            if (!judul || !konten) return alert('Lengkapi data!');
+
+            showLoading(true);
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Penting untuk Apps Script POST
+                    body: JSON.stringify({ action: 'addBerita', judul, konten })
+                });
+                alert('Berita berhasil ditambahkan (mungkin butuh beberapa saat untuk muncul)');
+                document.getElementById('news-title').value = '';
+                document.getElementById('news-content').value = '';
+                loadAdminNews();
+            } catch (err) {
+                console.error(err);
+            }
+            showLoading(false);
+        }
+
+        async function deleteBerita(id) {
+            if (!confirm('Hapus berita ini?')) return;
+            showLoading(true);
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify({ action: 'deleteBerita', id })
+                });
+                alert('Permintaan hapus dikirim.');
+                loadAdminNews();
+            } catch (err) {
+                console.error(err);
+            }
+            showLoading(false);
+        }
+
+        async function loadAdminNews() {
+            const container = document.getElementById('admin-news-list');
+            container.innerHTML = 'Memuat...';
+            const data = await fetchData('getBerita');
+            container.innerHTML = '';
+            data.reverse().forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'list-group-item d-flex justify-content-between align-items-center';
+                div.innerHTML = `
+                    <span>${item.judul}</span>
+                    <button class="btn btn-sm btn-danger" onclick="deleteBerita('${item.id}')">Hapus</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading-overlay').style.display = show ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>
